@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Importante</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff5f9e, #ffc371);
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 120px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #28a745;
+            color: white;
+            margin-right: 10px;
+        }
+
+        #no {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+        }
+
+        .message {
+            display: none;
+            font-size: 22px;
+            color: #28a745;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Daria o c* de graça?</h1>
+
+        <div class="buttons">
+            <button id="yes">Sim</button>
+            <button id="no">Não</button>
+        </div>
+
+        <div class="message" id="message">
+            Agora é só ser feliz ❤️
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+        const message = document.getElementById("message");
+
+        function moveButton() {
+            const container = document.querySelector(".buttons");
+
+            const maxX = container.clientWidth - noButton.offsetWidth;
+            const maxY = container.clientHeight - noButton.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        }
+
+        noButton.addEventListener("mouseenter", moveButton);
+        noButton.addEventListener("touchstart", moveButton);
+
+        yesButton.addEventListener("click", () => {
+            document.querySelector(".buttons").style.display = "none";
+            message.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
